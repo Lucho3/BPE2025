@@ -1,0 +1,132 @@
+1.
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int triangle(int a, int b){
+    int s=a*b/2;
+    return s;
+}
+int square(int a){
+    int s=a*a;
+    return s;
+}
+
+int rect(int a, int b){
+    int s=a*b;
+    return s;
+}
+
+int circle(int r){
+    int s=r*r*3.14;
+    return s;
+}
+
+int main() {
+    // Write C code here
+    int n=0;
+    scanf("%d", &n);
+    switch(n){
+        case 1: { printf("square\n a= ");
+        int a=0;
+        scanf("%d", &a);
+        printf("S=%d", square(a)); break;
+        }
+        case 2: { printf("rectangle\n a=");
+        int a=0;
+        scanf("%d", &a);
+        int b=0;
+        printf("\n b=");
+        scanf("%d", &b);
+        printf("S=%d", rect(a, b)); break;}
+        
+        case 3: {printf("triangle\n a=");
+        int a=0;
+        scanf("%d", &a);
+        int b=0;
+        printf("\n b=");
+        scanf("%d", &b);
+        printf("S=%d", triangle(a, b)); break;}
+        
+        case 4: {printf("circle\n r= ");
+        int a=0;
+        scanf("%d", &a);
+        printf("S=%d", circle(a)); break;}
+        
+        default: printf("Wrong ans"); break;
+    }
+
+    return 0;
+}
+
+
+
+------------------------------------------------------------------------------
+
+2.
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+
+void switchnum(double a, double b){
+    a = a+b;
+    b = a-b;
+    a = a-b;
+    printf("%lf, %lf", a,b);
+}
+
+int main() {
+ 
+ switchnum(5,6);
+
+
+    return 0;
+}
+
+
+------------------------------------------------------------------
+3.
+// Online C compiler to run C program online
+#include <stdio.h>
+
+
+void checker(int a){
+    if(a%2==0)
+    printf("chetno");
+    else
+    printf("nechetno");
+}
+
+int main() {
+ 
+ checker(6);
+
+
+    return 0;
+}
+
+-------------------------------------------------------------------
+4.
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+
+void convert(int a){
+   if(a>0){
+   
+       convert(a/2);
+
+       printf("%d", a%2);
+   }
+   
+}
+
+int main() {
+ 
+ convert(10);
+
+
+    return 0;
+}
