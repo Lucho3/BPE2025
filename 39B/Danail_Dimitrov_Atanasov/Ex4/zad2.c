@@ -12,7 +12,7 @@ int main(){
 int Switch(int a, int b){
     a = a+b;
     b = a-b;
-    b = a-b;
+    a = a-b;
     return a,b;
 
 }
