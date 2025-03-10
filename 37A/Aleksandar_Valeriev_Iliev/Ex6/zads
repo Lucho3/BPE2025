@@ -1,0 +1,82 @@
+1.
+
+  int sum=0;
+    int arr[10];
+    int n;
+       for (int i = 0; i < 7; i++) {
+       scanf("%d", &n);
+
+       while (n < -5000 || n > 5000) {
+           printf("Enter a number between -5000 and 5000: ");
+           scanf("%d", &n);
+       }
+
+       arr[i] = n;
+   }
+    for(int i=0;i<8;i++){
+        sum =sum+arr[i];
+    }
+    printf("%d", sum);
+    
+    
+----------------------------------------
+
+2.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int arr[10];
+    int n;
+       for (int i = 0; i < 7; i++) {
+       scanf("%d", &n);
+
+       while (n < -5000 || n > 5000) {
+           printf("Enter a number between -5000 and 5000: ");
+           scanf("%d", &n);
+       }
+
+       arr[i] = n;
+   }
+    int max=arr[0];
+    for(int i=0;i<8;i++){
+       if(max<arr[i])
+        max=arr[i];
+    }
+    printf("%d", max);
+    return 0;
+}
+
+--------------------------------------
+3.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+   int sum=0;
+    int arr[7];
+    int n=0;
+    for (int i = 0; i < 7; i++) {
+       scanf("%d", &n);
+
+       while (n < -5000 || n > 5000) {
+           printf("Enter a number between -5000 and 5000: ");
+           scanf("%d", &n);
+       }
+
+       arr[i] = n;
+   }
+    for(int i=0;i<7;i++){
+        sum =sum+arr[i];
+    }
+    float avrg= sum/(sizeof(arr)/sizeof(int));
+    printf("%f", avrg);
+    return 0;
+}
+
+-------------------------------------------
+
+4.
