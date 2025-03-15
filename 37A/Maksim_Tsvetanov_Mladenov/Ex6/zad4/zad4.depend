@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1742040404 source:d:\tu-практикум\ЛБ\10.03.2025\zad4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
