@@ -80,3 +80,47 @@ int main()
 -------------------------------------------
 
 4.
+#include <stdio.h>
+#include <stdlib.h>
+
+double getAverage(int arr[], int size) {
+    double sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum / size;
+}
+
+int closestToAverage(int arr[], int size) {
+    double average = getAverage(arr, size);
+    int closestIndex = 0;
+    int smallestDifference = abs(arr[0] - average);
+
+    for (int i = 1; i < size; i++) {
+        int difference = abs(arr[i] - average);
+        if (difference < smallestDifference) {
+            smallestDifference = difference;
+            closestIndex = i;
+        }
+    }
+    return closestIndex;
+}
+
+int main() {
+    int arr[10];
+    int n;
+       for (int i = 0; i < 7; i++) {
+       scanf("%d", &n);
+
+       while (n < -5000 || n > 5000) {
+           printf("Enter a number between -5000 and 5000: ");
+           scanf("%d", &n);
+       }
+
+       arr[i] = n;
+   }
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int index = closestToAverage(arr, size);
+    printf("Index closest to average: %d\n", index);
+    return 0;
+}
