@@ -1,0 +1,81 @@
+1.
+ 
+#include <stdio.h>
+ 
+int main() {
+    char str[] = "hello";
+    int counter = 0;
+    for (char *c = str; *c != '\0'; c++) {
+        counter++;
+    }
+    printf("%d", counter);
+    return 0;
+}
+ 
+---------------------------------------------------------
+ 
+2.
+ 
+ 
+#include <stdio.h>
+ 
+int main() {
+    char str[] = "hello wolrd hi";
+    int counter = 0;
+    for (char *c = str; *c != '\0'; c++) {
+            if(*c == ' ')
+            counter++;
+    }
+    counter++;
+    printf("%d", counter);
+    return 0;
+}
+ 
+-----------------------------------------------------------
+ 
+3.
+ 
+ 
+ 
+ 
+ 
+-------------------------------------------------------------
+ 
+4.
+ 
+#include <stdio.h>
+ 
+int main() {
+ 
+    char str[]="hello";
+    char str2[]="world";
+ 
+   if (strcmp(str, str2) == 0)
+        printf("yes");
+    else
+        printf("no");
+ 
+    return 0;
+}
+ 
+-----------------------------------------------------------
+ 
+5.
+ 
+#include <stdio.h>
+#include <string.h>
+ 
+int main() {
+    char str[] = "hello world";
+    int counter = 0;
+    for (char *c = str; *c != '\0'; c++) {
+            if(*c=='a' || *c=='o' || *c=='e' || *c=='u' || *c=='i' || *c=='y')
+        counter++;
+    }
+    printf("%d", counter);
+    return 0;
+}
+ 
+----------------------------------------------------------
+ 
+6.
