@@ -35,7 +35,21 @@ int main() {
  
 3.
  
+ #include <stdio.h>
  
+int main() {
+ 
+   int num[26]={0};
+char sent[]={"hello"};
+for(char *c = sent; *c!='\0'; c++){
+ num[*c-97]++;
+}
+for(int i =0; i<26; i++){
+ printf("%c: %d\n",i+97, num[i]);
+}
+ 
+    return 0;
+}
  
  
  
@@ -79,3 +93,20 @@ int main() {
 ----------------------------------------------------------
  
 6.
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char str[100];
+    
+    printf("String: ");
+    fgets(str, sizeof(str), stdin);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] = toupper(str[i]);
+    }
+
+    printf("Uppercase: %s", str);
+
+    return 0;
+}
