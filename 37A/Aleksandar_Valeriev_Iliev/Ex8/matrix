@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+
+
+    int arr[3][3] ={{1,2,3},
+                    {4,5,6},
+                    {7,8,9}};
+
+    printf("glaven: ");
+    for(int i=0;i<3;i++)
+       printf("%d ",arr[i][i]);
+    printf("\n");
+
+
+    printf("vtori: ");
+       for(int i=0;i<3;i++)
+                 printf("%d ",arr[i][2-i]);
+    printf("\n");
+
+
+
+     printf("nad: ");
+       for(int i=0;i<3;i++)
+        for(int j=i+1;j<3;j++)
+            printf("%d ", arr[i][j]);
+     
+    printf("\n");
+
+
+
+   printf("pod: ");
+       for(int i=1;i<3;i++)
+        for(int j=0;j<i;j++)
+            printf("%d ", arr[i][j]);
+
+    printf("\n");
+
+
+    return 0;
+}
+
+------------------------------------------------------------------
+
+2.
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+
+
+    int arr[3][3] ={{2,7,6},
+                    {9,5,1},
+                    {4,3,8}};
+
+int red[3] ={0,0,0};
+int kolona[3];
+
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+        red[i] =  red[i]+ arr[i][j];     
+        kolona[j] = kolona[j]+arr[i][j];   
+    }
+}
+
+if(red[0]==red[1] && red[1]==red[2] && red[2]==kolona[0] && kolona[0]==kolona[1] && kolona[1]==kolona[2])
+printf("magicheski");
+else
+printf("not magicheski");
+
+ 
+
+    return 0;
+}
