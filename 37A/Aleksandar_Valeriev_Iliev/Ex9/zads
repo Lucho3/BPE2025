@@ -1,0 +1,141 @@
+
+1.
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+
+
+ int *p = (void*)malloc(7 *sizeof(int));
+ if(p==NULL)
+    exit(1);
+
+
+  int sum=0;
+    int n;
+       for (int i = 0; i < 7; i++) {
+       scanf("%d", &n);
+
+       while (n < -5000 || n > 5000) {
+           printf("Enter a number between -5000 and 5000: ");
+           scanf("%d", &n);
+       }
+
+       p[i] = n;
+   }
+    for(int i=0;i<8;i++){
+        sum =sum+p[i];
+    }
+    printf("%d", sum);
+
+
+    return 0;
+}
+
+
+
+----------------------------------------
+
+2.
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+
+
+ int *p = (void*)malloc(7 *sizeof(int));
+ if(p==NULL)
+    exit(1);
+
+
+  int sum=0;
+    int n;
+       for (int i = 0; i < 7; i++) {
+       scanf("%d", &n);
+
+       while (n < -5000 || n > 5000) {
+           printf("Enter a number between -5000 and 5000: ");
+           scanf("%d", &n);
+       }
+
+       p[i] = n;
+   }
+  int max=p[0];
+    for(int i=0;i<7;i++){
+       if(max<p[i])
+        max=p[i];
+    }
+    printf("%d", max);
+    return 0;
+}
+
+
+--------------------------------------
+3.
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+
+ int *p = (void*)malloc(7 *sizeof(int));
+ if(p==NULL)
+    exit(1);
+
+
+  int sum=0;
+    int n;
+       for (int i = 0; i < 7; i++) {
+       scanf("%d", &n);
+
+       while (n < -5000 || n > 5000) {
+           printf("Enter a number between -5000 and 5000: ");
+           scanf("%d", &n);
+       }
+
+       p[i] = n;
+   }
+    for(int i=0;i<7;i++){
+        sum =sum+p[i];
+    }
+
+
+    float avrg= sum/7;
+    printf("%f", avrg);
+    return 0;
+}
+
+
+------------------------------------------------------------
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+
+
+    int arr[3][3] ={{2,7,6},
+                    {9,5,1},
+                    {4,3,8}};
+
+int red[3] ={0,0,0};
+int kolona[3];
+
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+        red[i] =  red[i]+ arr[i][j];
+        kolona[j] = kolona[j]+arr[i][j];
+    }
+}
+
+if(red[0]==red[1] && red[1]==red[2] && red[2]==kolona[0] && kolona[0]==kolona[1] && kolona[1]==kolona[2])
+printf("magicheski");
+else
+printf("not magicheski");
+
+
+
+    return 0;
+}
