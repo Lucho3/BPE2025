@@ -1,0 +1,87 @@
+2.
+ 
+#include <stdio.h>
+#include <ctype.h>
+ 
+typedef struct vehicle{
+int speed;
+int seats;
+} veh;
+ 
+typedef struct car{
+    veh base;
+    int doors;
+}car;
+ 
+typedef struct boat{
+    veh base;
+}boat;
+ 
+typedef struct motor{
+    veh base;
+    char brand[10];
+}motor;
+ 
+typedef struct plane{
+    veh base;
+}plane;
+ 
+int main() {
+ 
+car car={{100,5},4};
+boat boat={{30,6}};
+motor motor={{200,2}, "hoya"};
+plane plane={{500, 80}};
+ 
+if(car.base.speed>motor.base.speed)
+    printf("car faster \n");
+else
+    printf("motor faster \n");
+ 
+if(plane.base.seats>boat.base.seats)
+    printf("plane bigger \n");
+else
+    printf("boat bigger \n");
+ 
+ 
+    return 0;
+}
+ 
+-----------------------------------------------------------------
+ 
+3.
+ 
+#include <stdio.h>
+#include <ctype.h>
+ 
+typedef struct Student{
+float grade;
+char name[30];
+} student;
+ 
+typedef struct klas{
+    student student;
+    int klas;
+    char paralelka;
+}klas;
+ 
+typedef struct vipusk{
+    klas klas;
+    int count;
+ 
+}vipusk;
+ 
+ 
+ 
+int main(){
+ 
+student st1={6,"alex"};
+student st2={5,"ivan"};
+student st3={4.50,"georgi"};
+student st4={4.75,"peter"};
+ 
+ 
+klas klas1={st1, 10, "a"};
+ 
+    return 0;
+}
