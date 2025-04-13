@@ -60,15 +60,15 @@ char name[30];
 } student;
  
 typedef struct klas{
-    student student;
+    student student[30];
     int klas;
     char paralelka;
+    int studentcount;
 }klas;
  
 typedef struct vipusk{
-    klas klas;
-    int count;
- 
+    klas klas[6];
+    int classcount;
 }vipusk;
  
  
@@ -81,7 +81,23 @@ student st3={4.50,"georgi"};
 student st4={4.75,"peter"};
  
  
-klas klas1={st1, 10, "a"};
- 
+klas klas1={{st1, st2}, 10, 'a',2};
+klas klas2={{st3, st4}, 10, 'b', 2};
+
+vipusk vipusk10={{klas1, klas2},2};
+
+   float totalGrade = 0;
+    int totalStudents = 0;
+
+    for (int i = 0; i < vipusk10.classcount; i++) {
+        for (int j = 0; j < vipusk10.klas[i].studentcount; j++) {
+            totalGrade += vipusk10.klas[i].student[j].grade;
+            totalStudents++;
+        }
+    }
+    float average=0;
+if(totalStudents!=0)
+   average = totalGrade / totalStudents;
+    printf("Average grade of vipusk: %.2f\n", average);
     return 0;
 }
