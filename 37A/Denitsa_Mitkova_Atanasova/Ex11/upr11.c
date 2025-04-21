@@ -1,0 +1,195 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+//zad1
+void bubbleSort(int arr[], int n) 
+{
+    for (int i = 0; i < n-1; i++) 
+    {
+        for (int j = 0; j < n-i-1; j++) 
+        {
+            if (arr[j] > arr[j+1]) 
+            {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+
+int main() 
+{
+
+      FILE *file;
+    int N;
+
+    file = fopen("numbers.bin", "wb"); 
+    if (file == NULL) 
+    {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+ printf("Enter how many numbers (N): ");
+    scanf("%d", &N);
+
+    int numbers[N];
+    for (int i = 0; i < N; i++) 
+    {
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+    
+    fwrite(&N, sizeof(int), 1, file);
+    fwrite(numbers, sizeof(int),N, file);
+
+    fclose(file);
+    
+     file = fopen("numbers.bin", "rb");
+     if(file==NULL)
+     exit(1);
+     
+     int even=0, odd=0;
+     int filenums[N];
+     fread(&N, sizeof(int), 1, file);
+     fread(filenums, sizeof(int), N, file);
+     for(int i=0; i<N;i++)
+     {
+         if(filenums[i]%2==0)
+         even++;
+         else
+         odd++;
+     }
+
+    bubbleSort(filenums,N);
+    FILE * file2 = fopen("sorted.txt", "w");
+    for(int i=0; i<N;i++)
+    fprintf(file2, "%d ", filenums[i]);
+    
+    fclose(file);
+    fclose(file2);
+    return 0;
+}
+
+
+// zad2
+void bubbleSort(int arr[], int n) 
+{
+    for (int i = 0; i < n-1; i++) 
+    {
+        for (int j = 0; j < n-i-1; j++) 
+        {
+            if (arr[j] > arr[j+1]) 
+            {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main() 
+{
+  
+  FILE * file= fopen("file.bin","wb");
+  if(file==NULL)
+  exit(1);
+  
+  int nums[]={10,30,50,670};
+  fwrite(nums, sizeof(int),4,file);
+  fclose(file);
+  file= fopen("file.bin","rb");
+  if(file==NULL)
+  exit(1);
+  
+  int filenums[4];
+  fread(filenums, sizeof(int), 4, file);
+  fclose(file);
+  bubbleSort(filenums, 4);
+  
+  FILE * file2= fopen("sorted.txt", "w");
+  if (file2 == NULL) 
+     exit(1);
+  for(int i=0; i<4; i++)
+  fprintf(file2, "%d ", filenums[i] );
+  fclose(file2);
+    return 0;
+}
+
+//zad3
+#include <string.h>
+
+typedef struct Car
+{
+    char brand[30];
+    char model[10];
+     float engineVolume;
+    float price;
+    char registration;
+} Car;
+
+void writeFile(struct Car car)
+{
+    FILE * binf = fopen("car.bin","ab");
+    if(binf==NULL)
+    exit(1);
+    fwrite(&car, sizeof(Car), 1, binf);
+    fclose(binf);
+ 
+    FILE * textf = fopen("car.txt","a");
+    if(textf==NULL)
+    exit(1);
+ 
+    fprintf(textf, "%s %s %.2f %.2f %c\n", car.brand, car.model, car.engineVolume, car.price, car.registration);
+    fclose(textf);        
+}
+
+
+void readBinaryFile() 
+{
+    FILE *binf = fopen("car.bin", "rb");
+    if (binf == NULL) 
+    {
+       exit(1);
+    }
+
+    Car car;
+    printf("Reading from binary file:\n");
+    while (fread(&car, sizeof(Car), 1, binf) == 1) 
+    {
+        printf("%s %s %.2f %.2f %c\n", car.brand, car.model, car.engineVolume, car.price, car.registration);
+    }
+
+    fclose(binf);
+}
+
+void readTextFile() 
+{
+    FILE *textf = fopen("car.txt", "r");
+    if (textf == NULL) 
+    {
+       exit(1);
+    }
+
+    char line[128];
+    printf("\nReading from text file:\n");
+    while (fgets(line, sizeof(line), textf) != NULL) 
+    {
+        printf("%s", line);
+    }
+
+    fclose(textf);
+}
+
+
+int main()
+{
+    Car car={"mercedes", "a90",200, 10000, 'Y'};
+    writeFile(car);
+     readBinaryFile();
+    readTextFile();
+    return 0;
+}
