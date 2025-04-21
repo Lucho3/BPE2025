@@ -1,0 +1,67 @@
+1.
+
+#include <stdio.h>
+#include<stdlib.h>
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+
+int main() {
+    // Write C code her
+    
+      FILE *file;
+    int N;
+
+    file = fopen("numbers.bin", "wb"); // "wb" = write binary
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+ printf("Enter how many numbers (N): ");
+    scanf("%d", &N);
+
+    int numbers[N];
+    for (int i = 0; i < N; i++) {
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+    
+    fwrite(&N, sizeof(int), 1, file);
+    fwrite(numbers, sizeof(int),N, file);
+
+    fclose(file);
+    
+     file = fopen("numbers.bin", "rb");
+     if(file==NULL)
+     exit(1);
+     
+     int even=0, odd=0;
+     int filenums[N];
+     fread(&N, sizeof(int), 1, file);
+     fread(filenums, sizeof(int), N, file);
+     for(int i=0; i<N;i++){
+         if(filenums[i]%2==0)
+         even++;
+         else
+         odd++;
+     }
+    bubbleSort(filenums,N);
+    FILE * file2 = fopen("sorted.txt", "w");
+    for(int i=0; i<N;i++)
+    fprintf(file2, "%d ", filenums[i]);
+    
+    fclose(file);
+    fclose(file2);
+    return 0;
+}
