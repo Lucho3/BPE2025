@@ -17,12 +17,11 @@ void bubbleSort(int arr[], int n) {
 
 
 int main() {
-    // Write C code her
-    
+
       FILE *file;
     int N;
 
-    file = fopen("numbers.bin", "wb"); // "wb" = write binary
+    file = fopen("numbers.bin", "wb"); 
     if (file == NULL) {
         printf("Error opening file!\n");
         return 1;
@@ -63,5 +62,56 @@ int main() {
     
     fclose(file);
     fclose(file2);
+    return 0;
+}
+
+
+---------------------------------------------------------------------------------------
+2.
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include<stdlib.h>
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+  
+  FILE * file= fopen("file.bin","wb");
+  if(file==NULL)
+  exit(1);
+  
+  int nums[]={10,30,50,670};
+  fwrite(nums, sizeof(int),4,file);
+  fclose(file);
+  
+  file= fopen("file.bin","rb");
+  if(file==NULL)
+  exit(1);
+  
+  int filenums[4];
+  fread(filenums, sizeof(int), 4, file);
+  fclose(file);
+  
+  bubbleSort(filenums, 4);
+  
+  FILE * file2= fopen("sorted.txt", "w");
+  if (file2 == NULL) 
+     exit(1);
+  for(int i=0; i<4; i++)
+  fprintf(file2, "%d ", filenums[i] );
+  
+  fclose(file2);
+  
     return 0;
 }
